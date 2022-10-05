@@ -35,4 +35,43 @@ public class SistemaTest {
         sistema.addGerarchia(gerarchia2);
         assertFalse(sistema.checkNomeNuovoRadice("radice2"));
     }
+
+    @Test
+    void controlloCategoriaFogliaPresente(){
+        Categoria radice1=new Categoria("radice1","",null);
+        HashMap <Categoria, Categoria> ramo= new HashMap<Categoria,Categoria>();
+        Categoria figlio=new Categoria("figlio","",null);
+        ramo.put(figlio,radice1);
+        Gerarchia gerarchia1=new Gerarchia(ramo,radice1);
+        sistema.addGerarchia(gerarchia1);
+
+        assertTrue(sistema.isFoglia("figlio"));
+    }
+
+    @Test
+    void controlloCategoriaFogliaNonPresente(){
+        Categoria radice1=new Categoria("radice1","",null);
+        HashMap <Categoria, Categoria> ramo= new HashMap<Categoria,Categoria>();
+        Categoria figlio=new Categoria("figlio","",null);
+        ramo.put(figlio,radice1);
+        Gerarchia gerarchia1=new Gerarchia(ramo,radice1);
+        sistema.addGerarchia(gerarchia1);
+
+        assertFalse(sistema.isFoglia("nuovo"));
+    }
+
+    @Test
+    void controlloCategoriaNonFogliaPresente() {
+        Categoria radice1 = new Categoria("radice1", "", null);
+        HashMap<Categoria, Categoria> ramo = new HashMap<Categoria, Categoria>();
+        Categoria figlio = new Categoria("figlio", "", null);
+        ramo.put(figlio, radice1);
+        Categoria figlio2 = new Categoria("figlio2", "", null);
+        ramo.put(figlio2, figlio);
+        Gerarchia gerarchia1 = new Gerarchia(ramo, radice1);
+        sistema.addGerarchia(gerarchia1);
+
+        assertFalse(sistema.isFoglia("figlio"));
+    }
+
 }
