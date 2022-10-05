@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ValiditaIntervalloTest {
+public class IntervalloTest {
 
     Orario orario1= new Orario(10,00);
     Orario orario2= new Orario(23,30);
@@ -36,6 +36,26 @@ public class ValiditaIntervalloTest {
     void intervalloDieciDieciValido(){
         Intervallo intervallo=new Intervallo(new Orario[]{orario1, orario1});
         assertFalse(intervallo.intervalloValido());
+    }
+
+    @Test
+    void intervalloOttoDieciUguale(){
+        Intervallo intervallo1=new Intervallo(new Orario[]{orario5, orario1});
+        Intervallo intervallo2=new Intervallo(new Orario[]{orario5, orario1});
+        assertTrue(intervallo1.compareIntervallo(intervallo2));
+    }
+
+    @Test
+    void intervalloOttoDieciSingoloUguale(){
+        Intervallo intervallo1=new Intervallo(new Orario[]{orario5, orario1});
+        assertTrue(intervallo1.compareIntervallo(intervallo1));
+    }
+
+    @Test
+    void intervalloOttoDieciOttoTrentaDieciDiverso(){
+        Intervallo intervallo1=new Intervallo(new Orario[]{orario5, orario1});
+        Intervallo intervallo2=new Intervallo(new Orario[]{orario4, orario1});
+        assertFalse(intervallo1.compareIntervallo(intervallo2));
     }
 
 }

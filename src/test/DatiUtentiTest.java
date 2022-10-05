@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
-public class ControlliCredenziali {
+public class DatiUtentiTest {
 
     ArrayList<Utente> lista=new ArrayList<>();
     DatiUtenti datiUtenti=new DatiUtenti(lista);
