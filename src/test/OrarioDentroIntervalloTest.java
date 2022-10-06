@@ -12,8 +12,6 @@ public class OrarioDentroIntervalloTest {
     Orario orario3 = new Orario(24, 00);
     Orario orario4 = new Orario(8, 30);
     Orario orario5 = new Orario(8, 00);
-    Orario orario6 = new Orario(22, 40);
-    Orario orario7 = new Orario(25, 00);
 
     @Test
     void oreDieciDentroIntervallo() {
